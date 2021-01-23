@@ -1,0 +1,56 @@
+plugins {
+    id 'org.springframework.boot' version '2.4.2'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'io.c12.bala.web'
+version = '0.0.1'
+sourceCompatibility = '15'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenLocal()
+    maven { url "http://art.nwie.net/artifactory/libs-release" }
+    mavenCentral()
+}
+
+dependencies {
+    // Springboot core
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // Springboot utils
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // webjars
+    implementation 'org.webjars:bootstrap:4.6.0'
+    implementation 'org.webjars:jquery:3.5.1'
+    implementation 'org.webjars:webjars-locator:0.40'
+
+    // Springboot test
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // Cucumber
+    testImplementation 'io.cucumber:cucumber-java:6.9.1'
+    testImplementation 'io.cucumber:cucumber-junit:6.9.1'
+//    testImplementation 'io.cucumber:cucumber-spring:6.9.1'
+    testImplementation 'io.cucumber:gherkin:16.0.0'
+
+    // Selenium and Html Unit
+    testImplementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
+    testImplementation 'org.seleniumhq.selenium:htmlunit-driver:2.46.0'
+    testImplementation 'net.sourceforge.htmlunit:htmlunit:2.46.0'
+}
+
+test {
+    useJUnitPlatform()
+    maxParallelForks = Runtime.runtime.availableProcessors()
+}
