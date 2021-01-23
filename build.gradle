@@ -45,6 +45,7 @@ dependencies {
 
     // fluentlenium integration testing with html unit
     testImplementation 'org.fluentlenium:fluentlenium-spock:4.5.1'
+    testImplementation 'org.seleniumhq.selenium:htmlunit-driver:2.46.0'
     testImplementation 'net.sourceforge.htmlunit:htmlunit:2.46.0'
 }
 
