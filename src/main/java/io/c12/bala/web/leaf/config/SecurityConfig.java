@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
@@ -22,12 +23,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/register").permitAll()
-                .anyRequest()
-                .authenticated().and().formLogin().loginPage("/login").failureUrl("/login?error=true")
+                .anyRequest().authenticated()
+                .and().formLogin().loginPage("/login").successForwardUrl("/home")
                 .usernameParameter("email")
                 .passwordParameter("password")
-                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/")
+                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/")
                 .and().exceptionHandling()
                 .and().sessionManagement().sessionFixation().newSession();
     }
@@ -35,14 +35,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) {
         web.ignoring()
-                .antMatchers("/js/**", "/css/**", "/icon/**");
+                .antMatchers("/js/**", "/css/**", "/icon/**", "/webfonts/**");
     }
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .inMemoryAuthentication()
-                .withUser("user").password("password").roles("USER");
+                .withUser("john@c12.io").password("$2a$10$vSP18CrEzoST2Bx1kjRh5.wkIcTGEWDpc.7hZKy47NeLTYCLmvHsa").roles("USER");
+        // password - Password@123
     }
 
     @Bean

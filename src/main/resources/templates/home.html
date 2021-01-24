@@ -4,14 +4,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css} "/>
+    <link rel="stylesheet" th:href="@{css/bulma.min.css}" href="/static/css/bulma.min.css"/>
+    <link rel="stylesheet" th:href="@{css/all.min.css}" href="/static/css/all.min.css"/>
+    <link rel="icon" type="image/png" th:href="@{icon/favicon-32x32.png}" href="/static/icon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" th:href="@{icon/favicon-16x16.png}" href="/static/icon/favicon-16x16.png" sizes="16x16" />
     <title>Leaf :: Home</title>
 </head>
 <body>
-<h4 id="header">Home Page</h4>
+<!-- navbar -->
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="https://bulma.io">
+            <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+        </a>
 
-<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+            <a class="navbar-item">
+                Home
+            </a>
+
+            <a class="navbar-item">
+                Documentation
+            </a>
+
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                    More
+                </a>
+
+                <div class="navbar-dropdown">
+                    <a class="navbar-item">
+                        About
+                    </a>
+                    <a class="navbar-item">
+                        Jobs
+                    </a>
+                    <a class="navbar-item">
+                        Contact
+                    </a>
+                    <hr class="navbar-divider">
+                    <a class="navbar-item">
+                        Report an issue
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-light" th:href="@{/logout}" href="login.html">
+                        Log out
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<!-- /navbar -->
+<!-- hero -->
+<section class="hero is-dark">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                Leaf Application
+            </h1>
+            <h2 class="subtitle">
+                Thymeleaf Springboot Demo Application
+            </h2>
+        </div>
+    </div>
+</section>
+<!-- /hero -->
+<!-- section -->
+<section class="section">
+    <div class="container">
+        <p class="subtitle">
+            <a th:href="@{/admin/users}" href="users.html">Users List</a>&nbsp;|&nbsp;<a th:href="@{/admin/audit}" href="audit.html">Audit Users</a>
+        </p>
+    </div>
+</section>
+<!-- /section -->
+<!-- footer -->
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            <strong>Leaf App</strong> by <a href="https://jgthms.com">Balasubramanian Palaniappan</a>. The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+        </p>
+    </div>
+</footer>
+<!-- /footer -->
+<script type="text/javascript" th:src="@{js/all.min.js}" src="/static/js/all.min.js"></script>
 </body>
 </html>

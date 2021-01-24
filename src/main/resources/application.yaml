@@ -1,0 +1,9 @@
+spring:
+  web:
+    resources:
+      cache:
+        cachecontrol:
+          max-age: 365d
+logging:
+  level:
+    root: info
