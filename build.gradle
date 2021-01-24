@@ -33,6 +33,11 @@ dependencies {
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.projectlombok:lombok'
 
+    // Webjars for web libraries
+    implementation 'org.webjars.npm:bulma:0.9.1'
+    implementation 'org.webjars:font-awesome:5.15.2'
+    implementation 'org.webjars:webjars-locator:0.40'
+
     // Springboot test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 

@@ -1,43 +1,17 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" th:href="@{css/bulma.min.css}" href="/static/css/bulma.min.css"/>
-    <link rel="stylesheet" th:href="@{css/all.min.css}" href="/static/css/all.min.css"/>
-    <link rel="icon" type="image/png" th:href="@{icon/favicon-32x32.png}" href="/static/icon/favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" th:href="@{icon/favicon-16x16.png}" href="/static/icon/favicon-16x16.png" sizes="16x16" />
+<head th:replace="fragments/page-template.html :: header(title='Leaf :: Index')">
     <title>Leaf :: Index</title>
 </head>
 <body>
-<section class="hero is-dark">
-    <div class="hero-body">
-        <div class="container">
-            <h1 class="title">
-                Leaf Application
-            </h1>
-            <h2 class="subtitle">
-                Thymeleaf Springboot Demo Application
-            </h2>
-        </div>
-    </div>
-</section>
+<section th:replace="fragments/page-template.html :: hero"></section>
 <section class="section">
     <div class="container">
         <p class="subtitle">
-            <a th:href="@{/login}" href="login.html">login</a>&nbsp;|&nbsp;<a th:href="@{/register}" href="register.html">register</a>
+            <a th:href="@{/login}" href="login.html" th:text="#{app.index.login.link.text}">login</a>&nbsp;|&nbsp;<a th:href="@{/register}" href="register.html" th:text="#{app.index.register.link.text}">register</a>
         </p>
     </div>
 </section>
-<footer class="footer">
-    <div class="content has-text-centered">
-        <p>
-            <strong>Leaf App</strong> by <a href="https://jgthms.com">Balasubramanian Palaniappan</a>. The source code is licensed
-            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
-        </p>
-    </div>
-</footer>
-<script type="text/javascript" th:src="@{js/all.min.js}" src="/static/js/all.min.js"></script>
+<footer th:replace="fragments/page-template.html :: footer"></footer>
 </body>
 </html>

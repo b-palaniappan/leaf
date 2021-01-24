@@ -13,13 +13,16 @@
 <body>
 <section class="section">
     <div class="container">
-        <h1 class="title">
+        <h1 class="title" th:text="#{app.name}">
             Leaf Application
         </h1>
         <p class="subtitle">
             Login Credentials
         </p>
         <form action="/login" th:action="@{/login}" method="post">
+            <div class="notification is-danger" th:if="${param.error} != null">
+                <p>Invalid email address and / or password</p>
+            </div>
             <div class="field">
                 <label for="email_inp" class="label">Email</label>
                 <div class="control has-icons-left">
@@ -51,9 +54,8 @@
 </section>
 <footer class="footer">
     <div class="content has-text-centered">
-        <p>
-            <strong>Leaf App</strong> by <a href="https://jgthms.com">Balasubramanian Palaniappan</a>. The source code is licensed
-            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+        <p th:utext="#{app.footer.text}">
+            <strong>Leaf App</strong> Footer message goes here.
         </p>
     </div>
 </footer>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="header (title)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" th:href="@{/webjars/bulma/css/bulma.min.css}" href="/webjars/bulma/css/bulma.min.css"/>
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.min.css}" href="/webjars/font-awesome/css/all.min.css"/>
+    <link rel="icon" type="image/png" th:href="@{icon/favicon-32x32.png}" href="/static/icon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" th:href="@{icon/favicon-16x16.png}" href="/static/icon/favicon-16x16.png" sizes="16x16" />
+    <title th:text="${title}">Leaf App</title>
+</head>
+<body>
+<section class="hero is-dark" th:fragment="hero">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title" th:text="#{app.index.name}">
+                Leaf Application
+            </h1>
+            <h2 class="subtitle" th:utext="#{app.index.sub.title}">
+                Thymeleaf Springboot Demo Application
+            </h2>
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="container">
+        <p class="subtitle">
+            <a th:href="@{/login}" href="login.html" th:text="#{app.index.login.link.text}">login</a>&nbsp;|&nbsp;<a th:href="@{/register}" href="register.html" th:text="#{app.index.register.link.text}">register</a>
+        </p>
+    </div>
+</section>
+<footer class="footer" th:fragment="footer">
+    <div class="content has-text-centered">
+        <p th:utext="#{app.footer.text}">
+            <strong>Leaf App</strong> Footer message goes here.
+        </p>
+    </div>
+    <script type="text/javascript" th:src="@{/webjars/font-awesome/js/all.min.js}" src="/webjars/font-awesome/js/all.min.js"></script>
+</footer>
+</body>
+</html>
