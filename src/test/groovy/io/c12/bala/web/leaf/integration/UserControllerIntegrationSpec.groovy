@@ -8,7 +8,7 @@ import org.openqa.selenium.remote.DesiredCapabilities
 class UserControllerIntegrationSpec extends FluentSpecification {
 
     @Override
-    Capabilities getCapabilities(){
+    Capabilities getCapabilities() {
         // Configure iBoss proxy
         org.openqa.selenium.Proxy proxy = new org.openqa.selenium.Proxy()
         proxy.setAutodetect(false)

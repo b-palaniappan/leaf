@@ -11,8 +11,8 @@
             Welcome to Leaf Application. Please Log In or Register.
         </p>
         <p>
-            <a th:href="@{/login}" href="login.html" th:text="#{app.index.login.link.text}" class="button is-link">Log In</a>&nbsp;&nbsp;
-            <a th:href="@{/register}" href="register.html" th:text="#{app.index.register.link.text}" class="button is-link is-success">Register</a>
+            <a class="button is-link" href="login.html" th:href="@{/login}" th:text="#{app.index.login.link.text}">Log In</a>&nbsp;&nbsp;
+            <a class="button is-link is-success" href="register.html" th:href="@{/register}" th:text="#{app.index.register.link.text}">Register</a>
         </p>
     </div>
 </section>

@@ -9,50 +9,50 @@
     <div class="container">
         <div class="columns">
             <div class="column is-one-third is-offset-one-third box">
-                <form action="/registerSubmit" th:action="@{/registerSubmit}" th:object="${registerUser}" method="post">
+                <form action="/registerSubmit" method="post" th:action="@{/registerSubmit}" th:object="${registerUser}">
                     <div class="notification is-success" th:if="${successMessage} != null">
                         <p th:text="${successMessage}">User Registered successfully</p>
                     </div>
                     <div class="field">
-                        <label for="first_name_inp" class="label">First Name</label>
+                        <label class="label" for="first_name_inp">First Name</label>
                         <div class="control has-icons-left">
-                            <input type="text" class="input" id="first_name_inp" name="firstName" th:field="*{firstName}" placeholder="First Name" required>
+                            <input class="input" id="first_name_inp" name="firstName" placeholder="First Name" required th:field="*{firstName}" type="text">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
                             </span>
                         </div>
                     </div>
                     <div class="field">
-                        <label for="last_name_inp" class="label">Email</label>
+                        <label class="label" for="last_name_inp">Email</label>
                         <div class="control has-icons-left">
-                            <input type="text" class="input" id="last_name_inp" name="lastName" th:field="*{lastName}" placeholder="Last Name" required>
+                            <input class="input" id="last_name_inp" name="lastName" placeholder="Last Name" required th:field="*{lastName}" type="text">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
                             </span>
                         </div>
                     </div>
                     <div class="field">
-                        <label for="email_inp" class="label">Email</label>
+                        <label class="label" for="email_inp">Email</label>
                         <div class="control has-icons-left">
-                            <input type="email" class="input" id="email_inp" name="email" th:field="*{email}" placeholder="demo@email.com" required>
+                            <input class="input" id="email_inp" name="email" placeholder="demo@email.com" required th:field="*{email}" type="email">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-envelope"></i>
                             </span>
                         </div>
                     </div>
                     <div class="field">
-                        <label for="password_inp" class="label" id="passwordHelp">Password <i class="fas fa-question-circle"></i></label>
+                        <label class="label" for="password_inp" id="passwordHelp">Password <i class="fas fa-question-circle"></i></label>
                         <div class="control has-icons-left">
-                            <input type="password" class="input" id="password_inp" name="password" th:field="*{password}" placeholder="Password" required>
+                            <input class="input" id="password_inp" name="password" placeholder="Password" required th:field="*{password}" type="password">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-lock"></i>
                             </span>
                         </div>
                     </div>
                     <div class="field">
-                        <label for="confirm_password_inp" class="label">Confirm Password</label>
+                        <label class="label" for="confirm_password_inp">Confirm Password</label>
                         <div class="control has-icons-left">
-                            <input type="password" class="input" id="confirm_password_inp" name="confirmPassword" th:field="*{confirmPassword}" placeholder="Confirm Password" required>
+                            <input class="input" id="confirm_password_inp" name="confirmPassword" placeholder="Confirm Password" required th:field="*{confirmPassword}" type="password">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-lock"></i>
                             </span>
@@ -61,7 +61,7 @@
                     <div class="field">
                         <div class="control">
                             <label class="checkbox">
-                                <input type="checkbox" required>
+                                <input required type="checkbox">
                                 I agree to the <a href="#">terms and conditions</a>
                             </label>
                         </div>
@@ -69,10 +69,10 @@
                     <hr>
                     <div class="field is-grouped">
                         <div class="control">
-                            <button type="reset" class="button is-link is-light">Cancel</button>
+                            <button class="button is-link is-light" type="reset">Cancel</button>
                         </div>
                         <div class="control">
-                            <button type="submit" class="button is-link">Register</button>
+                            <button class="button is-link" type="submit">Register</button>
                         </div>
                     </div>
                 </form>
@@ -85,7 +85,7 @@
     <div class="modal-card">
         <header class="modal-card-head">
             <p class="modal-card-title">Password criteria</p>
-            <button class="delete" id="closeTop" aria-label="close"></button>
+            <button aria-label="close" class="delete" id="closeTop"></button>
         </header>
         <section class="modal-card-body">
             <div class="content">
@@ -108,11 +108,11 @@
 </div>
 <footer th:replace="fragments/page-template.html :: footer"></footer>
 <script>
-    $("#passwordHelp").click(function() {
+    $("#passwordHelp").click(function () {
         $(".modal").addClass("is-active");
     });
 
-    $("#closeTop,#modelOkayBtn").click(function() {
+    $("#closeTop,#modelOkayBtn").click(function () {
         $(".modal").removeClass("is-active");
     });
 </script>

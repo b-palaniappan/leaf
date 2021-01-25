@@ -35,7 +35,7 @@ public class RegisterUser {
     private String confirmPassword;
 
     // to validate password and confirm password are same.
-    @AssertTrue(message="Confirm Password should match Password")
+    @AssertTrue(message = "Confirm Password should match Password")
     private boolean isConfirmPassword() {
         return this.password.equals(this.confirmPassword);
     }

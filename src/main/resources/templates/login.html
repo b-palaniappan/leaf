@@ -9,23 +9,23 @@
     <div class="container">
         <div class="columns">
             <div class="column is-one-third is-offset-one-third box">
-                <form action="/login" th:action="@{/login}" method="post">
+                <form action="/login" method="post" th:action="@{/login}">
                     <div class="notification is-danger" th:if="${param.error} != null">
                         <p>Invalid email address and / or password</p>
                     </div>
                     <div class="field">
-                        <label for="email_inp" class="label">Email</label>
+                        <label class="label" for="email_inp">Email</label>
                         <div class="control has-icons-left">
-                            <input type="email" class="input" id="email_inp" name="email" placeholder="demo@email.com" value="john@c12.io" required>
+                            <input class="input" id="email_inp" name="email" placeholder="demo@email.com" required type="email" value="john@c12.io">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-envelope"></i>
                             </span>
                         </div>
                     </div>
                     <div class="field">
-                        <label for="password_inp" class="label">Password</label>
+                        <label class="label" for="password_inp">Password</label>
                         <div class="control has-icons-left">
-                            <input type="password" class="input" id="password_inp" name="password" value="Password@123" required>
+                            <input class="input" id="password_inp" name="password" required type="password" value="Password@123">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-lock"></i>
                             </span>
@@ -34,13 +34,13 @@
                     <hr>
                     <div class="field is-grouped">
                         <div class="control">
-                            <button type="reset" class="button is-link is-light">Cancel</button>
+                            <button class="button is-link is-light" type="reset">Cancel</button>
                         </div>
                         <div class="control">
-                            <button type="submit" class="button is-link is-success">Log In</button>
+                            <button class="button is-link is-success" type="submit">Log In</button>
                         </div>
                         <div class="control">
-                            <a href="/forgotPassword" th:href="@{/forgotPassword}" class="button is-ghost is-text">Forgot Password?</a>
+                            <a class="button is-ghost is-text" href="/forgotPassword" th:href="@{/forgotPassword}">Forgot Password?</a>
                         </div>
                     </div>
                 </form>
