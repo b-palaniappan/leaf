@@ -4,6 +4,9 @@ spring:
       cache:
         cachecontrol:
           max-age: 365d
+  data:
+    mongodb:
+      uri: mongodb://localhost/leaf
 logging:
   level:
     root: info

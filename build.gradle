@@ -27,15 +27,18 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
     implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
 
     // Springboot utils
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.projectlombok:lombok'
+    implementation 'com.aventrix.jnanoid:jnanoid:2.0.0'
 
     // Webjars for web libraries
     implementation 'org.webjars.npm:bulma:0.9.1'
     implementation 'org.webjars:font-awesome:5.15.2'
+    implementation 'org.webjars:jquery:3.5.1'
     implementation 'org.webjars:webjars-locator:0.40'
 
     // Springboot test
