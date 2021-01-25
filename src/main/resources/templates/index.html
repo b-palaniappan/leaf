@@ -7,8 +7,12 @@
 <section th:replace="fragments/page-template.html :: hero"></section>
 <section class="section">
     <div class="container">
-        <p class="subtitle">
-            <a th:href="@{/login}" href="login.html" th:text="#{app.index.login.link.text}">login</a>&nbsp;|&nbsp;<a th:href="@{/register}" href="register.html" th:text="#{app.index.register.link.text}">register</a>
+        <p class="is-size-3">
+            Welcome to Leaf Application. Please Log In or Register.
+        </p>
+        <p>
+            <a th:href="@{/login}" href="login.html" th:text="#{app.index.login.link.text}" class="button is-link">Log In</a>&nbsp;&nbsp;
+            <a th:href="@{/register}" href="register.html" th:text="#{app.index.register.link.text}" class="button is-link is-success">Register</a>
         </p>
     </div>
 </section>

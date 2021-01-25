@@ -61,7 +61,7 @@
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
-                    <a class="button is-light" th:href="@{/logout}" href="login.html">
+                    <a class="button is-light" th:href="@{/logout}" href="/login.html">
                         Log out
                     </a>
                 </div>
@@ -74,7 +74,7 @@
 <section class="hero is-dark" th:fragment="hero">
     <div class="hero-body">
         <div class="container">
-            <h1 class="title" th:text="#{app.index.name}">
+            <h1 class="title" th:text="#{app.name}">
                 Leaf Application
             </h1>
             <h2 class="subtitle" th:utext="#{app.index.sub.title}">
