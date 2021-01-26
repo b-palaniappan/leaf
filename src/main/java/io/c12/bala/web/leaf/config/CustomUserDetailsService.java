@@ -4,14 +4,14 @@ import io.c12.bala.web.leaf.entity.UserEntity;
 import io.c12.bala.web.leaf.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Component;
 
 @Log4j2
-@Component
+@Configuration
 @RequiredArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
 
