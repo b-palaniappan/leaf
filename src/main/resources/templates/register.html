@@ -13,6 +13,9 @@
                     <div class="notification is-success" th:if="${successMessage} != null">
                         <p th:text="${successMessage}" id="registerMessage">User Registered successfully</p>
                     </div>
+                    <div class="notification is-warning" th:if="${errorMessage} != null">
+                        <p th:text="${errorMessage}" id="errorMessage">User with email already exists</p>
+                    </div>
                     <div class="field">
                         <label class="label" for="firstNameInp">First Name</label>
                         <div class="control has-icons-left">

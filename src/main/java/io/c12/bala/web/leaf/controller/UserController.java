@@ -1,5 +1,6 @@
 package io.c12.bala.web.leaf.controller;
 
+import io.c12.bala.web.leaf.exception.UserAlreadyExistsException;
 import io.c12.bala.web.leaf.form.RegisterUser;
 import io.c12.bala.web.leaf.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -53,9 +54,16 @@ public class UserController {
      */
     @PostMapping("/registerSubmit")
     public String registerSubmit(@Valid @ModelAttribute RegisterUser registerUser, Model model) {
-        userService.saveUser(registerUser);
-        model.addAttribute("registerUser", new RegisterUser());
-        model.addAttribute("successMessage", "User added successfully");
+        try {
+            userService.saveUser(registerUser);
+            model.addAttribute("registerUser", new RegisterUser());
+            model.addAttribute("successMessage", "User added successfully");
+        } catch (UserAlreadyExistsException ex) {
+            log.warn("Warning message: {}", ex.getMessage());
+            model.addAttribute("registerUser", registerUser);
+            model.addAttribute("errorMessage", ex.getMessage());
+            model.addAttribute("successMessage", null);
+        }
         return "register";
     }
 
