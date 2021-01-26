@@ -14,18 +14,18 @@
                         <p>Invalid email address and / or password</p>
                     </div>
                     <div class="field">
-                        <label class="label" for="email_inp">Email</label>
+                        <label class="label" for="emailInp">Email</label>
                         <div class="control has-icons-left">
-                            <input class="input" id="email_inp" name="email" placeholder="demo@email.com" required type="email" value="john@c12.io">
+                            <input class="input" id="emailInp" name="email" placeholder="demo@email.com" required type="email" value="john@c12.io">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-envelope"></i>
                             </span>
                         </div>
                     </div>
                     <div class="field">
-                        <label class="label" for="password_inp">Password</label>
+                        <label class="label" for="passwordInp">Password</label>
                         <div class="control has-icons-left">
-                            <input class="input" id="password_inp" name="password" required type="password" value="Password@123">
+                            <input class="input" id="passwordInp" name="password" required type="password" value="Password@123">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-lock"></i>
                             </span>
@@ -34,7 +34,7 @@
                     <div class="field">
                         <div class="control">
                             <label class="checkbox">
-                                <input type="checkbox" name="rememberMe">
+                                <input type="checkbox" name="rememberMe" id="rememberMeCheckInp">
                                 Remember Me
                             </label>
                         </div>
@@ -42,13 +42,13 @@
                     <hr>
                     <div class="field is-grouped">
                         <div class="control">
-                            <button class="button is-link is-light" type="reset">Cancel</button>
+                            <button class="button is-link is-light" type="reset" id="cancelBtn">Cancel</button>
                         </div>
                         <div class="control">
-                            <button class="button is-link is-success" type="submit">Log In</button>
+                            <button class="button is-link is-success" type="submit" id="loginBtn">Log In</button>
                         </div>
                         <div class="control">
-                            <a class="button is-ghost is-text" href="/forgotPassword" th:href="@{/forgotPassword}">Forgot Password?</a>
+                            <a class="button is-ghost is-text" href="/forgotPassword" th:href="@{/forgotPassword}" id="forgotPasswordLnk">Forgot Password?</a>
                         </div>
                     </div>
                 </form>

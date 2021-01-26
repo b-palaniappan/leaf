@@ -9,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
 
 @Log4j2
 @Service
@@ -27,6 +28,7 @@ public class UserServiceImpl implements UserService {
         userEntity.setLastName(user.getLastName());
         userEntity.setEmail(user.getEmail());
         userEntity.setPassword(passwordEncoder.encode(user.getPassword()));
+        userEntity.setRoles(Collections.singletonList("ROLE_USER"));
         userEntity.setCreateDate(LocalDateTime.now());
         userEntity.setActive(true);
         userEntity.setLocked(false);

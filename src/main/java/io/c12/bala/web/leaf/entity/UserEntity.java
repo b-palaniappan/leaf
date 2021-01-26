@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Document("user")
 @Data
@@ -21,6 +22,7 @@ public class UserEntity {
     private String lastName;
     private String email;
     private String password;
+    private List<String> roles;
     private boolean active;
     private boolean locked;
     private boolean resetPassword;

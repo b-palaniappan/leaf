@@ -37,7 +37,7 @@ public class CustomUserDetailsService implements UserDetailsService {
             log.warn("User not found in DB for email id {}", email);
             throw new UsernameNotFoundException(email);
         }
-        log.info("User found for email {}. Creating user details", email);
-        return User.withUsername(userEntity.getEmail()).password(userEntity.getPassword()).authorities("ROLE_USER").build();
+        log.info("User found for email {}. Creating UserDetails", email);
+        return User.withUsername(userEntity.getEmail()).password(userEntity.getPassword()).authorities(String.join(",", userEntity.getRoles())).build();
     }
 }

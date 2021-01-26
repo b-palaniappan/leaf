@@ -14,45 +14,45 @@
                         <p th:text="${successMessage}">User Registered successfully</p>
                     </div>
                     <div class="field">
-                        <label class="label" for="first_name_inp">First Name</label>
+                        <label class="label" for="firstNameInp">First Name</label>
                         <div class="control has-icons-left">
-                            <input class="input" id="first_name_inp" name="firstName" placeholder="First Name" required th:field="*{firstName}" type="text">
+                            <input class="input" id="firstNameInp" name="firstName" placeholder="First Name" required th:field="*{firstName}" type="text">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
                             </span>
                         </div>
                     </div>
                     <div class="field">
-                        <label class="label" for="last_name_inp">Email</label>
+                        <label class="label" for="lastNameInp">Email</label>
                         <div class="control has-icons-left">
-                            <input class="input" id="last_name_inp" name="lastName" placeholder="Last Name" required th:field="*{lastName}" type="text">
+                            <input class="input" id="lastNameInp" name="lastName" placeholder="Last Name" required th:field="*{lastName}" type="text">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
                             </span>
                         </div>
                     </div>
                     <div class="field">
-                        <label class="label" for="email_inp">Email</label>
+                        <label class="label" for="emailInp">Email</label>
                         <div class="control has-icons-left">
-                            <input class="input" id="email_inp" name="email" placeholder="demo@email.com" required th:field="*{email}" type="email">
+                            <input class="input" id="emailInp" name="email" placeholder="demo@email.com" required th:field="*{email}" type="email">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-envelope"></i>
                             </span>
                         </div>
                     </div>
                     <div class="field">
-                        <label class="label" for="password_inp" id="passwordHelp">Password <i class="fas fa-question-circle"></i></label>
+                        <label class="label" for="passwordInp" id="passwordHelp">Password <i class="fas fa-question-circle"></i></label>
                         <div class="control has-icons-left">
-                            <input class="input" id="password_inp" name="password" placeholder="Password" required th:field="*{password}" type="password">
+                            <input class="input" id="passwordInp" name="password" placeholder="Password" required th:field="*{password}" type="password">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-lock"></i>
                             </span>
                         </div>
                     </div>
                     <div class="field">
-                        <label class="label" for="confirm_password_inp">Confirm Password</label>
+                        <label class="label" for="confirmPasswordInp">Confirm Password</label>
                         <div class="control has-icons-left">
-                            <input class="input" id="confirm_password_inp" name="confirmPassword" placeholder="Confirm Password" required th:field="*{confirmPassword}" type="password">
+                            <input class="input" id="confirmPasswordInp" name="confirmPassword" placeholder="Confirm Password" required th:field="*{confirmPassword}" type="password">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-lock"></i>
                             </span>
@@ -61,7 +61,7 @@
                     <div class="field">
                         <div class="control">
                             <label class="checkbox">
-                                <input required type="checkbox">
+                                <input required type="checkbox" id="termsCheckInp">
                                 I agree to the <a href="#">terms and conditions</a>
                             </label>
                         </div>
@@ -69,10 +69,10 @@
                     <hr>
                     <div class="field is-grouped">
                         <div class="control">
-                            <button class="button is-link is-light" type="reset">Cancel</button>
+                            <button class="button is-link is-light" type="reset" id="cancelBtn">Cancel</button>
                         </div>
                         <div class="control">
-                            <button class="button is-link" type="submit">Register</button>
+                            <button class="button is-link" type="submit" id="registerBtn">Register</button>
                         </div>
                     </div>
                 </form>
