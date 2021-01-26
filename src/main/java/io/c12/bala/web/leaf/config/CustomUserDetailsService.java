@@ -10,6 +10,18 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
+/**
+ * This is used for Remember Me function.
+ *
+ * A cookie is created with value as below.
+ * base64(username + ":" + expirationTime + ":" +
+ * md5Hex(username + ":" + expirationTime + ":" password + ":" + key))
+ *
+ * username:          As identifiable to the UserDetailsService
+ * password:          That matches the one in the retrieved UserDetails
+ * expirationTime:    The date and time when the remember-me token expires, expressed in milliseconds
+ * key:               A private key to prevent modification of the remember-me token
+ */
 @Log4j2
 @Configuration
 @RequiredArgsConstructor
@@ -18,7 +30,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     private final UserRepository userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String email) {
         UserEntity userEntity = userRepository.findUserEntityByEmailIgnoreCase(email);
 
         if (userEntity == null) {
@@ -26,6 +38,6 @@ public class CustomUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException(email);
         }
         log.info("User found for email {}. Creating user details", email);
-        return User.withUsername(userEntity.getEmail()).password(userEntity.getPassword()).authorities("USER").build();
+        return User.withUsername(userEntity.getEmail()).password(userEntity.getPassword()).authorities("ROLE_USER").build();
     }
 }

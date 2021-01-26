@@ -22,7 +22,7 @@ public class UserController {
 
     private final UserService userService;
 
-    @GetMapping({"/", "/index"})
+    @GetMapping("/home")
     public String indexPage() {
         log.info("Index page is being loaded . . .");
         return "index";
@@ -50,7 +50,7 @@ public class UserController {
         return "login";
     }
 
-    @RequestMapping("/home")
+    @RequestMapping("/")
     public String home() {
         log.info("Loading home page . . .");
         return "home";

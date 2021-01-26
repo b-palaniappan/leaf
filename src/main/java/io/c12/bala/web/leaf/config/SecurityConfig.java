@@ -21,7 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 // Unauthenticated pages
-                .antMatchers("/").permitAll()
+                .antMatchers("/home").permitAll()
                 .antMatchers("/index").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/register").permitAll()
@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // Other urls have to be authenticated
                 .anyRequest().authenticated()
                 // Login form info
-                .and().formLogin().loginPage("/login").successForwardUrl("/home")
+                .and().formLogin().loginPage("/login").successForwardUrl("/")
                 .usernameParameter("email")
                 .passwordParameter("password")
                 // remember me configuration
@@ -38,10 +38,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // authentication using mongodb
                 .and().authenticationProvider(customAuthenticationProvider)
                 // Logout handler
-                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/").deleteCookies("DgR0R6FlY6CVwyiZBea7M")
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/home").deleteCookies("DgR0R6FlY6CVwyiZBea7M")
                 .and().exceptionHandling()
                 // Session management handler
-                .and().sessionManagement().sessionFixation().newSession();
+                .and().sessionManagement().sessionFixation().newSession()
+                .and().sessionManagement().invalidSessionUrl("/home")
+                .and().sessionManagement().maximumSessions(1);
     }
 
     @Override
