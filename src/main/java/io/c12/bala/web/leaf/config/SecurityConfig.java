@@ -1,9 +1,7 @@
 package io.c12.bala.web.leaf.config;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -17,6 +15,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final CustomAuthenticationProvider customAuthenticationProvider;
 
+    private final CustomUserDetailsService customUserDetailsService;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
@@ -29,8 +29,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().formLogin().loginPage("/login").successForwardUrl("/home")
                 .usernameParameter("email")
                 .passwordParameter("password")
+                .and().rememberMe().key("p*Uq2An$R^GZn8CNY#cP3su`zEDSTHS7b^+3k/x2!4a,kCjZ{m")
+                .rememberMeParameter("rememberMe").rememberMeCookieName("DgR0R6FlY6CVwyiZBea7M").userDetailsService(customUserDetailsService)
                 .and().authenticationProvider(customAuthenticationProvider)
-                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/")
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/").deleteCookies("DgR0R6FlY6CVwyiZBea7M")
                 .and().exceptionHandling()
                 .and().sessionManagement().sessionFixation().newSession();
     }
@@ -39,14 +41,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) {
         web.ignoring()
                 .antMatchers("/js/**", "/css/**", "/icon/**", "/webjars/**");
-    }
-
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .inMemoryAuthentication()
-                .withUser("john@c12.io").password("$2a$10$vSP18CrEzoST2Bx1kjRh5.wkIcTGEWDpc.7hZKy47NeLTYCLmvHsa").roles("USER");
-        // password - Password@123
     }
 
 }
