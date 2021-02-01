@@ -12,48 +12,32 @@
 </head>
 <body>
 <!-- navbar -->
-<nav aria-label="main navigation" class="navbar" role="navigation" th:fragment="navbar">
+<nav aria-label="main navigation" class="navbar is-dark" role="navigation" th:fragment="navbar">
     <div class="navbar-brand">
         <a class="navbar-item" href="https://bulma.io">
-            <img alt="application logo" height="28" src="https://bulma.io/images/bulma-logo.png" width="112">
+            <img alt="application logo" height="28" src="https://bulma.io/images/bulma-logo-white.png" width="112">
         </a>
 
-        <a aria-expanded="false" aria-label="menu" class="navbar-burger" data-target="navbarBasicExample" role="button">
+        <a aria-expanded="false" aria-label="menu" class="navbar-burger" data-target="leafNavBar" role="button">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
         </a>
     </div>
 
-    <div class="navbar-menu" id="navbarBasicExample">
+    <div class="navbar-menu" id="leafNavBar">
         <div class="navbar-start">
-            <a class="navbar-item">
-                Home
-            </a>
-
-            <a class="navbar-item">
-                Documentation
-            </a>
+            <a class="navbar-item">Home</a>
+            <a class="navbar-item">Documentation</a>
 
             <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link">
-                    More
-                </a>
-
+                <a class="navbar-link">More</a>
                 <div class="navbar-dropdown">
-                    <a class="navbar-item">
-                        About
-                    </a>
-                    <a class="navbar-item">
-                        Jobs
-                    </a>
-                    <a class="navbar-item">
-                        Contact
-                    </a>
+                    <a class="navbar-item">About</a>
+                    <a class="navbar-item">Jobs</a>
+                    <a class="navbar-item">Contact</a>
                     <hr class="navbar-divider">
-                    <a class="navbar-item">
-                        Report an issue
-                    </a>
+                    <a class="navbar-item">Report an issue</a>
                 </div>
             </div>
         </div>
@@ -61,9 +45,7 @@
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
-                    <a class="button is-light" href="/login.html" th:href="@{/logout}">
-                        Log out
-                    </a>
+                    <a class="button is-light" href="/login.html" th:href="@{/logout}">Log out</a>
                 </div>
             </div>
         </div>
@@ -71,7 +53,7 @@
 </nav>
 <!-- /navbar -->
 <!-- hero -->
-<section class="hero is-dark" th:fragment="hero">
+<section class="hero is-link" th:fragment="hero">
     <div class="hero-body">
         <div class="container">
             <h1 class="title" th:text="#{app.name}">
@@ -102,6 +84,14 @@
     </div>
     <script src="/webjars/font-awesome/js/all.min.js" th:src="@{/webjars/font-awesome/js/all.min.js}" type="text/javascript"></script>
     <script src="/webjars/jquery/js/jquery.min.js" th:src="@{/webjars/jquery/jquery.slim.min.js}" type="text/javascript"></script>
+    <script>
+        $(document).ready(function () {
+            $(".navbar-burger").click(function () {
+                $(".navbar-burger").toggleClass("is-active");
+                $(".navbar-menu").toggleClass("is-active");
+            });
+        })
+    </script>
 </footer>
 <!-- /footer -->
 </body>

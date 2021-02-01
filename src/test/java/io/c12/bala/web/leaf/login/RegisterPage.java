@@ -38,6 +38,9 @@ public class RegisterPage extends FluentPage {
     @FindBy(css = "#registerMessage")
     private FluentWebElement registerMessage;
 
+    @FindBy(css = "#errorMessage")
+    private FluentWebElement errorMessage;
+
     public RegisterPage typeFirstName(String firstName) {
         firstNameInput.write(firstName);
         return this;
@@ -87,5 +90,17 @@ public class RegisterPage extends FluentPage {
 
     public String getRegisterMessage() {
         return registerMessage.text();
+    }
+
+    public String getErrorMessage() {
+        return errorMessage.text();
+    }
+
+    public String readFirstName() {
+        return firstNameInput.value();
+    }
+
+    public String readLastName() {
+        return lastNameInput.text();
     }
 }

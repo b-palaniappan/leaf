@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,9 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
 
+import static io.c12.bala.web.leaf.constants.AppConstants.*;
+
 @Log4j2
 @Controller
-@Validated
 @RequiredArgsConstructor
 public class UserController {
 
@@ -30,7 +31,7 @@ public class UserController {
     @GetMapping("/home")
     public String indexPage() {
         log.info("Index page is being loaded . . .");
-        return "index";
+        return LEAF_APP_INDEX_PAGE;
     }
 
     /**
@@ -42,8 +43,8 @@ public class UserController {
     public String registerUser(Model model) {
         log.info("Register a new user . . .");
         // initialize a empty bean to be populated
-        model.addAttribute("registerUser", new RegisterUser());
-        return "register";
+        model.addAttribute(LEAF_APP_REGISTER_USER_ATTRIBUTE, new RegisterUser());
+        return LEAF_APP_REGISTER_PAGE;
     }
 
     /**
@@ -53,18 +54,21 @@ public class UserController {
      * @return register page
      */
     @PostMapping("/registerSubmit")
-    public String registerSubmit(@Valid @ModelAttribute RegisterUser registerUser, Model model) {
+    public String registerSubmit(@Valid @ModelAttribute RegisterUser registerUser, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return LEAF_APP_REGISTER_PAGE;
+        }
         try {
             userService.saveUser(registerUser);
-            model.addAttribute("registerUser", new RegisterUser());
+            model.addAttribute(LEAF_APP_REGISTER_USER_ATTRIBUTE, new RegisterUser());
             model.addAttribute("successMessage", "User added successfully");
         } catch (UserAlreadyExistsException ex) {
             log.warn("Warning message: {}", ex.getMessage());
-            model.addAttribute("registerUser", registerUser);
+            model.addAttribute(LEAF_APP_REGISTER_USER_ATTRIBUTE, registerUser);
             model.addAttribute("errorMessage", ex.getMessage());
             model.addAttribute("successMessage", null);
         }
-        return "register";
+        return LEAF_APP_REGISTER_PAGE;
     }
 
     /**
@@ -74,7 +78,7 @@ public class UserController {
     @GetMapping("/login")
     public String userLogin() {
         log.info("login . . .");
-        return "login";
+        return LEAF_APP_LOGIN_PAGE;
     }
 
     /**
@@ -84,6 +88,6 @@ public class UserController {
     @RequestMapping("/")
     public String home() {
         log.info("Loading home page . . .");
-        return "home";
+        return LEAF_APP_HOME_PAGE;
     }
 }

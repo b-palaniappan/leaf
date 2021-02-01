@@ -19,54 +19,63 @@
                     <div class="field">
                         <label class="label" for="firstNameInp">First Name</label>
                         <div class="control has-icons-left">
-                            <input class="input" id="firstNameInp" name="firstName" placeholder="First Name" required th:field="*{firstName}" type="text">
+                            <input class="input" id="firstNameInp" name="firstName" placeholder="First Name" required th:field="*{firstName}" type="text" th:errorclass="is-danger">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
                             </span>
+                            <p class="help is-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">
                         </div>
                     </div>
                     <div class="field">
                         <label class="label" for="lastNameInp">Last Name</label>
                         <div class="control has-icons-left">
-                            <input class="input" id="lastNameInp" name="lastName" placeholder="Last Name" required th:field="*{lastName}" type="text">
+                            <input class="input" id="lastNameInp" name="lastName" placeholder="Last Name" required th:field="*{lastName}" type="text" th:errorclass="is-danger">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
                             </span>
+                            <p class="help is-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">
                         </div>
                     </div>
                     <div class="field">
                         <label class="label" for="emailInp">Email</label>
                         <div class="control has-icons-left">
-                            <input class="input" id="emailInp" name="email" placeholder="demo@email.com" required th:field="*{email}" type="email">
+                            <input class="input" id="emailInp" name="email" placeholder="demo@email.com" required th:field="*{email}" type="email" th:errorclass="is-danger">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-envelope"></i>
                             </span>
+                            <p class="help is-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
                         </div>
                     </div>
                     <div class="field">
                         <label class="label" for="passwordInp" id="passwordHelp">Password <i class="fas fa-question-circle"></i></label>
                         <div class="control has-icons-left">
-                            <input class="input" id="passwordInp" name="password" placeholder="Password" required th:field="*{password}" type="password">
+                            <input class="input" id="passwordInp" name="password" placeholder="Password" required th:field="*{password}" type="password" th:errorclass="is-danger"
+                                   th:classappend="${#fields.hasErrors('passwordMatch')} ? 'is-danger' : ''">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-lock"></i>
                             </span>
+                            <p class="help is-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">
                         </div>
                     </div>
                     <div class="field">
                         <label class="label" for="confirmPasswordInp">Confirm Password</label>
                         <div class="control has-icons-left">
-                            <input class="input" id="confirmPasswordInp" name="confirmPassword" placeholder="Confirm Password" required th:field="*{confirmPassword}" type="password">
+                            <input class="input" id="confirmPasswordInp" name="confirmPassword" placeholder="Confirm Password" required th:field="*{confirmPassword}" type="password" th:errorclass="is-danger"
+                                   th:classappend="${#fields.hasErrors('passwordMatch')} ? 'is-danger' : ''">
                             <span class="icon is-small is-left">
                                 <i class="fas fa-lock"></i>
                             </span>
+                            <p class="help is-danger" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}">
+                            <p class="help is-danger" th:if="${#fields.hasErrors('passwordMatch')}" th:errors="*{passwordMatch}">
                         </div>
                     </div>
                     <div class="field">
                         <div class="control">
                             <label class="checkbox">
-                                <input required type="checkbox" id="termsCheckInp">
+                                <input required type="checkbox" id="termsCheckInp" name="termsAgreed" th:field="*{termsAgreed}" th:errorclass="is-danger">
                                 I agree to the <a href="#">terms and conditions</a>
                             </label>
+                            <p class="help is-danger" th:if="${#fields.hasErrors('termsAgreed')}" th:errors="*{termsAgreed}">
                         </div>
                     </div>
                     <hr>
@@ -97,7 +106,8 @@
                     <li>Password must contain at least one digit [0-9].</li>
                     <li>Password must contain at least one lowercase Latin character [a-z].</li>
                     <li>Password must contain at least one uppercase Latin character [A-Z].</li>
-                    <li>Password must contain at least one special character like ! @ # & ( ).</li>
+                    <li>Password must contain at least one special character. Allowed special characters are ! @ # $ % ^ & *.</li>
+                    <li>Password cannot contain any white space</li>
                     <li>Password must contain a length of at least 8 characters and a maximum of 255 characters.</li>
                 </ol>
             </div>
