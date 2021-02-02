@@ -3,11 +3,11 @@ package io.c12.bala.web.leaf.form;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.validation.constraints.*;
 
-@Log4j2
+@Slf4j
 @Data
 @ToString
 @EqualsAndHashCode

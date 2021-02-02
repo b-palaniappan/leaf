@@ -4,7 +4,7 @@ import io.c12.bala.web.leaf.exception.UserAlreadyExistsException;
 import io.c12.bala.web.leaf.form.RegisterUser;
 import io.c12.bala.web.leaf.service.UserService;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,7 +17,7 @@ import javax.validation.Valid;
 
 import static io.c12.bala.web.leaf.constants.AppConstants.*;
 
-@Log4j2
+@Slf4j
 @Controller
 @RequiredArgsConstructor
 public class UserController {
@@ -26,6 +26,7 @@ public class UserController {
 
     /**
      * Load home page.. which have a link to Login and Register
+     *
      * @return index page
      */
     @GetMapping("/home")
@@ -36,6 +37,7 @@ public class UserController {
 
     /**
      * Load register page form
+     *
      * @param model - spring ui model
      * @return register page
      */
@@ -49,8 +51,9 @@ public class UserController {
 
     /**
      * Submit registration info, add use to DB
+     *
      * @param registerUser bean with registration info
-     * @param model - Spring ui model
+     * @param model        - Spring ui model
      * @return register page
      */
     @PostMapping("/registerSubmit")
@@ -73,6 +76,7 @@ public class UserController {
 
     /**
      * Login page with credentials
+     *
      * @return login page
      */
     @GetMapping("/login")
@@ -83,11 +87,12 @@ public class UserController {
 
     /**
      * Home page after successful login
+     *
      * @return home page
      */
     @RequestMapping("/")
     public String home() {
-        log.info("Loading home page . . .");
+        log.info("Loading home page. User logged in.");
         return LEAF_APP_HOME_PAGE;
     }
 }

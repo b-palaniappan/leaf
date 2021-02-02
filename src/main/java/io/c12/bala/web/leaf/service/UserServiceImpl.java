@@ -5,14 +5,14 @@ import io.c12.bala.web.leaf.exception.UserAlreadyExistsException;
 import io.c12.bala.web.leaf.form.RegisterUser;
 import io.c12.bala.web.leaf.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.Collections;
 
-@Log4j2
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
