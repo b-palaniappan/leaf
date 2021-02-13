@@ -64,7 +64,7 @@ public class UserController {
         try {
             userService.saveUser(registerUser);
             model.addAttribute(LEAF_APP_REGISTER_USER_ATTRIBUTE, new RegisterUser());
-            model.addAttribute("successMessage", "User added successfully");
+            model.addAttribute("successMessage", "User added successfully. Click <a href='/login'>here</a> to login");
         } catch (UserAlreadyExistsException ex) {
             log.warn("Warning message: {}", ex.getMessage());
             model.addAttribute(LEAF_APP_REGISTER_USER_ATTRIBUTE, registerUser);
