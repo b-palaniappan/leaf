@@ -70,7 +70,7 @@ class UserControllerIntegrationSpec extends FluentSpecification {
                 .clickRegisterButton()
 
         then: "verify if register success message is shown"
-        registerPage.getRegisterMessage() == "User added successfully"
+        registerPage.getRegisterMessage() == "User added successfully. Click here to login"
     }
 
     def "User fill in register user info and click cancel"() {
