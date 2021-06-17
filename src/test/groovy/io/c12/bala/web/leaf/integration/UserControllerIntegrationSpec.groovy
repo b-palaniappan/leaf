@@ -49,7 +49,7 @@ class UserControllerIntegrationSpec extends FluentSpecification {
 
     def "call user controller"() {
         when: "call application running in localhost"
-        goTo("http://localhost:8080")
+        goTo("http://localhost:8880")
 
         then: "verify the title is index"
         window().title() == "Leaf :: Login"

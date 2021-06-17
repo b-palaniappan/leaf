@@ -5,7 +5,7 @@ import org.fluentlenium.core.annotation.PageUrl;
 import org.fluentlenium.core.domain.FluentWebElement;
 import org.openqa.selenium.support.FindBy;
 
-@PageUrl("http://localhost:8080/register")
+@PageUrl("http://localhost:8880/register")
 public class RegisterPage extends FluentPage {
 
     @FindBy(css = "#firstNameInp")
