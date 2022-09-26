@@ -5,7 +5,7 @@ import org.fluentlenium.core.annotation.PageUrl;
 import org.fluentlenium.core.domain.FluentWebElement;
 import org.openqa.selenium.support.FindBy;
 
-@PageUrl("http://localhost:8880/login")
+@PageUrl("/login")
 public class LoginPage extends FluentPage {
 
     @FindBy(css = "#emailInp")

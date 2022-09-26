@@ -10,7 +10,7 @@
 * Use fluentlenium with htmlunit for UI Regression testing.
 
 ### TODO
-* New Feature will be added in future.
+* New Feature will be added in the future.
 
 ## Run local mongoDB
 Command to run local docker MongoDB - `docker run --rm --name local-mongo -p 27017:27017 -d mongo:bionic`

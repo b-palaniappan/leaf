@@ -9,6 +9,7 @@ import spock.lang.Specification
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -17,12 +18,23 @@ class UserControllerIntegrationSpec extends Specification {
     @Autowired
     private MockMvc mockMvc
 
-    def "user controller integration test"() {
+    def "user controller integration test for home page"() {
         when: "controller is called"
-        def result = mockMvc.perform(get("/"))
+        def result = mockMvc.perform(get("/home"))
 
         then: "verify the response"
         result.andDo(print()).andReturn()
         result.andExpect(status().isOk())
+        result.andExpect(view().name("index"))
+    }
+
+    def "user controller integration test for registration page"() {
+        when: "controller is called"
+        def result = mockMvc.perform(get("/register"))
+
+        then: "verify the response"
+        result.andDo(print()).andReturn()
+        result.andExpect(status().isOk())
+        result.andExpect(view().name("register"))
     }
 }

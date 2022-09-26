@@ -1,13 +1,13 @@
 plugins {
-    id 'org.springframework.boot' version '2.5.1'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'org.springframework.boot' version '2.7.4'
+    id 'io.spring.dependency-management' version '1.0.14.RELEASE'
     id 'java'
     id 'groovy'
 }
 
 group = 'io.c12.bala.web'
-version = '0.0.1'
-sourceCompatibility = '16'
+version = '0.1.0'
+sourceCompatibility = '17'
 
 configurations {
     compileOnly {
@@ -27,6 +27,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
 
     // Springboot utils
     compileOnly 'org.projectlombok:lombok'
@@ -35,22 +36,27 @@ dependencies {
     implementation 'com.aventrix.jnanoid:jnanoid:2.0.0'
 
     // Webjars for web libraries
-    implementation 'org.webjars.npm:bulma:0.9.2'
-    implementation 'org.webjars:font-awesome:5.15.3'
-    implementation 'org.webjars:jquery:3.6.0'
+    implementation 'org.webjars.npm:bulma:0.9.4'
+    implementation 'org.webjars:font-awesome:5.15.4'
+    implementation 'org.webjars:jquery:3.6.1'
     implementation 'org.webjars:jquery-validation:1.19.3'
-    implementation 'org.webjars:webjars-locator:0.41'
+    implementation 'org.webjars:webjars-locator:0.45'
 
     // Springboot test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
 
     // Spock
-    testImplementation 'org.spockframework:spock-spring:2.0-groovy-3.0'
+    testImplementation 'org.spockframework:spock-spring:2.2-groovy-3.0'
 
     // fluentlenium integration testing with html unit
-    testImplementation 'org.fluentlenium:fluentlenium-spock:4.8.0'
-    testImplementation 'org.seleniumhq.selenium:htmlunit-driver:2.50.0'
-    testImplementation 'net.sourceforge.htmlunit:htmlunit:2.50.0'
+    testImplementation 'org.fluentlenium:fluentlenium-spock:5.0.4'
+    testImplementation 'org.seleniumhq.selenium:htmlunit-driver:3.64.0'
+    testImplementation 'net.sourceforge.htmlunit:htmlunit:2.64.0'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
 }
 
 test {
